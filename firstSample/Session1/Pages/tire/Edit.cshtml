@@ -1,0 +1,50 @@
+﻿@page
+@model Session1.Pages.tire.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Tire</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Tire.Id" />
+            <div class="form-group">
+                <label asp-for="Tire.Name" class="control-label"></label>
+                <input asp-for="Tire.Name" class="form-control" />
+                <span asp-validation-for="Tire.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tire.Size" class="control-label"></label>
+                <input asp-for="Tire.Size" class="form-control" />
+                <span asp-validation-for="Tire.Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tire.Color" class="control-label"></label>
+                <input asp-for="Tire.Color" class="form-control" />
+                <span asp-validation-for="Tire.Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tire.Thickness" class="control-label"></label>
+                <input asp-for="Tire.Thickness" class="form-control" />
+                <span asp-validation-for="Tire.Thickness" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

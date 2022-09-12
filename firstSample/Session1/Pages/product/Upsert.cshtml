@@ -1,0 +1,61 @@
+﻿@page
+@model Session1.Pages.product.UpsertModel
+@{
+}
+
+<form method="post" enctype="multipart/form-data">
+    <input asp-for="ProductVM.Product.Id" hidden />
+
+    <div class="row">
+        <div class="col-10">
+            <div class="border p-3 mt-4 row">
+                <div class="col-12 pb-2">
+                  <h2 class="text-primary">@((Model.ProductVM != null && Model.ProductVM.Product.Id != 0) ? "Update" : "Create" ) </h2>
+
+                    <hr />
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+			<label asp-for="ProductVM.Product.Title"></label>
+			<input asp-for="ProductVM.Product.Title" class="form-control" />
+			<span asp-validation-for="ProductVM.Product.Title" class="text-danger"></span>
+			<label asp-for="ProductVM.Product.Barcode"></label>
+			<input asp-for="ProductVM.Product.Barcode" class="form-control" />
+			<span asp-validation-for="ProductVM.Product.Barcode" class="text-danger"></span>
+			<label asp-for="ProductVM.Product.Price"></label>
+			<input asp-for="ProductVM.Product.Price" class="form-control" />
+			<span asp-validation-for="ProductVM.Product.Price" class="text-danger"></span>
+
+			<div class="mb-3 col-6">
+			<label asp-for="ProductVM.Product.BikeTypeId"></label>
+			<select asp-for="ProductVM.Product.BikeTypeId" asp-items="(IEnumerable<SelectListItem>)@ViewData["BikeTypes"]"  class="form-select">
+				<option disabled selected>--Select BikeType--</option>
+			</select>
+			<select asp-for="ProductVM.Product.BikeTypeId" asp-items="@Model.ProductVM.BikeTypeList"  class="form-select">
+				<option disabled selected>--Select BikeType--</option>
+			</select>
+			<div class="mb-3">
+				<label asp-for="ProductVM.Product.ImageUrl"></label>
+				<input type="file" id="uploadBox" name="file" class="form-control" />
+			</div>
+			
+			<span asp-validation-for="ProductVM.Product.BikeTypeId" class="text-danger"></span>
+			</div>
+
+            <div class="col-12">
+				@if (Model.ProductVM != null && Model.ProductVM.Product.Id != 0)
+				{
+					<button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+				}
+				else
+				{
+					<button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+				}
+				<a asp-page="product/index" class="btn btn-secondary" style="width:150px">
+					Back to List
+				</a>
+			</div>
+		</div>
+    </div>
+</form>
